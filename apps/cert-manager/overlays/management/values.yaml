@@ -4,8 +4,7 @@ global:
     namespace: "cert-manager"
 
 serviceAccount:
-  annotations:
-    iam.gke.io/gcp-service-account: cert-manager@omniful-dev-infra.iam.gserviceaccount.com
+  annotations: {}
 
 extraArgs:
   - --enable-certificate-owner-ref=true
