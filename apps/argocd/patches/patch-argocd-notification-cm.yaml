@@ -8,7 +8,7 @@ data:
   service.slack: |
     token: $slack-token
   context: |
-    argocdUrl: https://argocd.gcpdev.omniful.com
+    argocdUrl: https://argocd.myscoot.com
   subscriptions: |
     - recipients:
       - slack:argocd-nonprod

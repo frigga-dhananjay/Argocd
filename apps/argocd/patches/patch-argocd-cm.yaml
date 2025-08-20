@@ -4,21 +4,6 @@ kind: ConfigMap
 metadata:
   name: argocd-cm
 data:
-  # dex.config: |
-  #   connectors:
-  #     # GitHub Connector Using Dex
-  #     - type: github
-  #       id: github-enterprise
-  #       name: GitHub
-  #       config:
-  #         clientID: $dex-secret:clientID
-  #         clientSecret: $dex-secret:clientSecret
-  #         orgs:
-  #         - name: omniful-dev-infra
-  #           teams:
-  #           - ArgoAdmin
-  #           - ArgoDeveloper
-  #           - ArgoPowerUser
   application.resourceTrackingMethod: annotation+label
   server.insecure: "true"
   admin.enabled: "true"
@@ -26,5 +11,5 @@ data:
   timeout.reconciliation: 1m
   timeout.reconciliation.jitter: 1m
   kustomize.buildOptions: --enable-helm
-  url: "https://argocd.dev.omniful.com"
+  url: "https://argocd.myscoot.com"
   oidc.tls.insecure.skip.verify: "true" # TODO: Need to remove this later . Seeref - https://github.com/argoproj/argo-helm/issues/1583

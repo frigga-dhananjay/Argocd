@@ -47,8 +47,6 @@ server:
     # extraTls:
     #   - hosts:
     #       - argocd.local
-    #       # - argocd.gcpdev.omniful.com
     #     secretName: argocd-ssl-tls
     hosts:
       - argocd.local
-      # - argocd.gcpdev.omniful.com

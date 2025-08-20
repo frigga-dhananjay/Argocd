@@ -3,9 +3,4 @@
   value:
     - dns01:
         cloudDNS:
-          # The ID of the GCP project
-          project: omniful-dev-infra
-      # selector:
-      #   dnsNames:
-      #     - gcpdev.omniful.com
-      #     - "*.gcpdev.omniful.com"
+          project: exly-dev-infra

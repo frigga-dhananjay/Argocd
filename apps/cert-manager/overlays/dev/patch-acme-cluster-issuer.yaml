@@ -10,7 +10,7 @@
     - dns01:
         cloudDNS:
           # The ID of the GCP project
-          project: omniful-dev-infra
+          project: exly-dev-infra
       selector:
         dnsZones:
-          - dev.omniful.com
+          - dev.exly.com

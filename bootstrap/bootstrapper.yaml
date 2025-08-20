@@ -10,7 +10,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:omniful/ArgoCD.git
+    repoURL: git@github.com:frigga-dhananjay/Argocd.git
     targetRevision: main
     path: bootstrap ## Bootstrap all applications from kubernetes/apps folder.
   destination:

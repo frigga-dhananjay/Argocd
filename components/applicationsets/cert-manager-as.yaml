@@ -25,7 +25,7 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: git@github.com:omniful/ArgoCD.git
+        repoURL: git@github.com:frigga-dhananjay/Argocd.git
         targetRevision: main # should be master for prod and dev
         path: apps/cert-manager/overlays/{{name}}
       destination:

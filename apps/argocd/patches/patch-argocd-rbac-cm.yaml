@@ -81,6 +81,6 @@ data:
     p, role:developer, repositories, get, dev/*, allow
     p, role:developer, logs, get, dev/*, allow
 
-    g, omniful-dev-infra:ArgoAdmin, role:super-admin
-    g, omniful-dev-infra:ArgoPowerUser, role:power-user
-    g, omniful-dev-infra:ArgoDeveloper, role:developer
+    g, exly-dev-infra:ArgoAdmin, role:super-admin
+    g, exly-dev-infra:ArgoPowerUser, role:power-user
+    g, exly-dev-infra:ArgoDeveloper, role:developer

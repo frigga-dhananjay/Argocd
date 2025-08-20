@@ -10,7 +10,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   sourceRepos:
-    - https://github.com/omniful-dev-infra/ArgoCD-Adserver
+    - https://github.com/exly-dev-infra/ArgoCD-Adserver
   destinations:
     - namespace: "*"
       server: https://10.10.0.34
