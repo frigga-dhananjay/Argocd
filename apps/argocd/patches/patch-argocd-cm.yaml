@@ -1,0 +1,30 @@
+## ref - https://argo-cd.readthedocs.io/en/stable/operator-manual/user-management/#oidc-configuration-with-dex
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  # dex.config: |
+  #   connectors:
+  #     # GitHub Connector Using Dex
+  #     - type: github
+  #       id: github-enterprise
+  #       name: GitHub
+  #       config:
+  #         clientID: $dex-secret:clientID
+  #         clientSecret: $dex-secret:clientSecret
+  #         orgs:
+  #         - name: omniful-dev-infra
+  #           teams:
+  #           - ArgoAdmin
+  #           - ArgoDeveloper
+  #           - ArgoPowerUser
+  application.resourceTrackingMethod: annotation+label
+  server.insecure: "true"
+  admin.enabled: "true"
+  jsonnet.enable: "false" # ref - https://argo-cd.readthedocs.io/en/stable/user-guide/tool_detection/
+  timeout.reconciliation: 1m
+  timeout.reconciliation.jitter: 1m
+  kustomize.buildOptions: --enable-helm
+  url: "https://argocd.dev.omniful.com"
+  oidc.tls.insecure.skip.verify: "true" # TODO: Need to remove this later . Seeref - https://github.com/argoproj/argo-helm/issues/1583

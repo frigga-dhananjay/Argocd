@@ -1,0 +1,7 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    iam.gke.io/gcp-service-account: argocd-fleet-admin@omniful-dev-infra.iam.gserviceaccount.com
+  name: argocd-server

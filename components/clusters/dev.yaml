@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: omniful-dev-infra-gke-cluster
+  labels:
+    argocd.argoproj.io/secret-type: cluster
+    env: dev
+    region: europe-west1
+    cluster: dev
+type: Opaque
+stringData:
+  name: dev
+  server: https://connectgateway.googleapis.com/v1beta1/projects/147902484285/locations/global/gkeMemberships/omniful-dev-infra-gke-cluster
+  config: |
+    {
+      "execProviderConfig": {
+        "command": "argocd-k8s-auth",
+        "args": ["gcp"],
+        "apiVersion": "client.authentication.k8s.io/v1beta1"
+      },
+      "tlsClientConfig": {
+        "insecure": false,
+        "caData": ""
+      }
+    }

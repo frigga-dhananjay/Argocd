@@ -1,0 +1,16 @@
+# - op: replace
+#   path: /spec/acme/solvers/0/dns01/route53
+#   value:
+#     region: eu-west-1
+#     role: arn:aws:iam::182614455229:role/iam-microstack-route53-externaldns-certmanager-role
+
+- op: add
+  path: /spec/acme/solvers
+  value:
+    - dns01:
+        cloudDNS:
+          # The ID of the GCP project
+          project: omniful-dev-infra
+      selector:
+        dnsZones:
+          - dev.omniful.com

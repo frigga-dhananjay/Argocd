@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-rbac-cm
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+data:
+  policy.default: role:readonly
+  policy.csv: |
+    # Read only policy
+    p, role:readonly, applications, get, */*, allow
+    p, role:readonly, certificates, get, *, allow
+    p, role:readonly, clusters, get, *, allow
+    p, role:readonly, repositories, get, *, allow
+    p, role:readonly, projects, get, *, allow
+    p, role:readonly, accounts, get, *, allow
+    p, role:readonly, gpgkeys, get, *, allow
+    p, role:readonly, logs, get, */*, allow
+
+    # Super admin policy
+    p, role:super-admin, applications, create, */*, allow
+    p, role:super-admin, applications, update, */*, allow
+    p, role:super-admin, applications, delete, */*, allow
+    p, role:super-admin, applications, sync, */*, allow
+    p, role:super-admin, applications, override, */*, allow
+    p, role:super-admin, applications, action/*, */*, allow
+    p, role:super-admin, applicationsets, get, */*, allow
+    p, role:super-admin, applicationsets, create, */*, allow
+    p, role:super-admin, applicationsets, update, */*, allow
+    p, role:super-admin, applicationsets, delete, */*, allow
+    p, role:super-admin, certificates, create, *, allow
+    p, role:super-admin, certificates, update, *, allow
+    p, role:super-admin, certificates, delete, *, allow
+    p, role:super-admin, clusters, create, *, allow
+    p, role:super-admin, clusters, update, *, allow
+    p, role:super-admin, clusters, delete, *, allow
+    p, role:super-admin, repositories, create, *, allow
+    p, role:super-admin, repositories, update, *, allow
+    p, role:super-admin, repositories, delete, *, allow
+    p, role:super-admin, projects, create, *, allow
+    p, role:super-admin, projects, update, *, allow
+    p, role:super-admin, projects, delete, *, allow
+    p, role:super-admin, accounts, update, *, allow
+    p, role:super-admin, gpgkeys, create, *, allow
+    p, role:super-admin, gpgkeys, delete, *, allow
+    p, role:super-admin, exec, create, */*, allow
+
+    # PowerUser Policy
+    p, role:power-user, applications, create, default/*, allow
+    p, role:power-user, applications, sync, default/*, allow
+    p, role:power-user, applications, create, default/*, allow
+
+    p, role:power-user, applications, get, dev/*, allow
+    p, role:power-user, applications, create, dev/*, allow
+    p, role:power-user, applications, update, dev/*, allow
+    p, role:power-user, applications, sync, dev/*, allow
+    p, role:power-user, applications, override, dev/*, allow
+    p, role:power-user, applications, action/*, dev/*, allow
+    p, role:power-user, clusters, get, dev/*, allow
+    p, role:power-user, clusters, create, dev/*, allow
+    p, role:power-user, clusters, update, dev/*, allow
+    p, role:power-user, repositories, get, dev/*, allow
+    p, role:power-user, repositories, update, dev/*, allow
+    p, role:power-user, projects, create, dev/*, allow
+    p, role:power-user, projects, update, dev/*, allow
+    p, role:power-user, logs, get, dev/*, allow
+    p, role:power-user, exec, create, dev/*, allow
+
+    # Run api migrations, except for prod
+    p, role:power-user, applications, sync, */*api-migrator, allow
+    p, role:power-user, applications, sync, prod*/*api-migrator, deny
+
+
+    # Developer Policy
+    p, role:developer, applications, get, dev/*, allow
+    p, role:developer, applications, sync, dev/*, allow
+    p, role:developer, applications, override, dev/*, allow
+    p, role:developer, clusters, get, dev/*, allow
+    p, role:developer, repositories, get, dev/*, allow
+    p, role:developer, repositories, get, dev/*, allow
+    p, role:developer, repositories, get, dev/*, allow
+    p, role:developer, logs, get, dev/*, allow
+
+    g, omniful-dev-infra:ArgoAdmin, role:super-admin
+    g, omniful-dev-infra:ArgoPowerUser, role:power-user
+    g, omniful-dev-infra:ArgoDeveloper, role:developer
