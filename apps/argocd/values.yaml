@@ -1,16 +1,16 @@
 redis-ha:
-  enabled: true
+  enabled: false
 
 controller:
   replicas: 1
 
 repoServer:
   autoscaling:
-    enabled: true
-    minReplicas: 2
+    enabled: false
+    minReplicas: 1
 
 applicationSet:
-  replicas: 2
+  replicas: 1
 
 global:
   domain: argocd.local
@@ -25,15 +25,15 @@ configs:
     timeout.reconciliation: 1m
     timeout.reconciliation.jitter: 1m
     kustomize.buildOptions: --enable-helm
-    url: "https://argocd.local"
-    oidc.tls.insecure.skip.verify: "true"
+    url: "http://argocd.local"
+    # oidc.tls.insecure.skip.verify: "true"
 
 server:
   service:
     type: NodePort
   autoscaling:
-    enabled: true
-    minReplicas: 2
+    enabled: false
+    minReplicas: 1
   ingress:
     enabled: true
     ingressClassName: nginx
@@ -44,8 +44,11 @@ server:
     #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
     #   ingress.kubernetes.io/rewrite-target: /
     #   cert-manager.io/cluster-issuer: letsencrypt-prod
-    extraTls:
-      - hosts:
-          - argocd.local
-          # - argocd.gcpdev.omniful.com
-        secretName: argocd-ssl-tls
+    # extraTls:
+    #   - hosts:
+    #       - argocd.local
+    #       # - argocd.gcpdev.omniful.com
+    #     secretName: argocd-ssl-tls
+    hosts:
+      - argocd.local
+      # - argocd.gcpdev.omniful.com

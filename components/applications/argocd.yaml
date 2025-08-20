@@ -5,7 +5,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: git@github.com:omniful/ArgoCD.git
+    - repoURL: git@github.com:frigga-dhananjay/Argocd.git
       targetRevision: main
       path: apps/argocd
   destination:
