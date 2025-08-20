@@ -6,3 +6,4 @@ namespace: argocd
 resources:
   - management.yaml
   - dev.yaml
+  - stage.yaml
